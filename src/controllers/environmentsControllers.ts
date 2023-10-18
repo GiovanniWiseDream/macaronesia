@@ -45,4 +45,26 @@ export class environmentsController {
       res.status(501).json({ message: "Error interno del servidor" });
     }
   }
+
+  
+  static async DeleteEnvironment(req, res) {
+    const { id } = req.body; // Suponiendo que el ID se pasa como parámetro en la URL
+    try {
+      // Busca el ambiente por su ID y elimínalo
+      const deletedEnvironment = await Environments.findByIdAndDelete(id);
+  
+      if (!deletedEnvironment) {
+        // Si no se encuentra un ambiente con ese ID, responde con un código de estado 404 (No encontrado)
+        return res.status(404).json({ message: "Entorno no encontrado" });
+      }
+  
+      // Responde con el ambiente eliminado y un código de estado 200 (OK)
+      res.status(200).json("El entorno se ha eliminado correctamente");
+    } catch (error) {
+      // Maneja cualquier error y responde con un código de estado 500 (error interno del servidor)
+      console.error(error);
+      res.status(500).json({ message: "Error interno del servidor" });
+    }
+  }
+  
 }

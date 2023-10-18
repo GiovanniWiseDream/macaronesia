@@ -18,6 +18,7 @@ class environmentsRouter {
   deleteRoutes() {}
   postRoutes() {
     this.router.post("/create", environmentsController.CreateEnvironment);
+    this.router.post("/delete", environmentsController.DeleteEnvironment)
   }
 
   patchRoutes() {}
