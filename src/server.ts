@@ -27,7 +27,7 @@ export class Server {
 
   configureCors() {
     const corsOptions = {
-      origin: /^http:\/\/localhost:\d+$/, // Permitir solicitudes solo desde localhost:8100
+      origin: process.env.NODE_ENV === "PROD" ? process.env.URL_PROD : /^http:\/\/localhost:\d+$/, // Permitir solicitudes solo desde localhost:8100
     };
     this.app.use(cors(corsOptions));
   }
