@@ -18,11 +18,11 @@ class environmentsRouter {
   deleteRoutes() {}
   postRoutes() {
     this.router.post("/create", environmentsController.CreateEnvironment);
-    this.router.post("/delete", environmentsController.DeleteEnvironment)
+    this.router.post("/delete", environmentsController.DeleteEnvironment);
   }
 
   patchRoutes() {
-    this.router.patch("/update", environmentsController.UpdateEnvironment)
+    this.router.patch("/update", environmentsController.UpdateEnvironment);
 
   }
 }
