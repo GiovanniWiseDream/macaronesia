@@ -21,6 +21,9 @@ class environmentsRouter {
     this.router.post("/delete", environmentsController.DeleteEnvironment)
   }
 
-  patchRoutes() {}
+  patchRoutes() {
+    this.router.patch("/update", environmentsController.UpdateEnvironment)
+
+  }
 }
 export default new environmentsRouter().router;

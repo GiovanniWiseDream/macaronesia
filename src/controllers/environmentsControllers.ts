@@ -1,3 +1,4 @@
+import environments from "../models/environments";
 import Environments from "../models/environments";
 const mongoose = require("mongoose");
 import { Request, Response, RequestHandler } from "express";
@@ -64,6 +65,40 @@ export class environmentsController {
       // Maneja cualquier error y responde con un código de estado 500 (error interno del servidor)
       console.error(error);
       res.status(500).json({ message: "Error interno del servidor" });
+    }
+  }
+
+  static async UpdateEnvironment(req: Request, res: Response): Promise<void> {
+    const {
+      _id,
+      newName,
+      newImage,
+      newMap,
+    } = req.body;
+
+    try {
+      const environment = await environments.findById(_id);
+      if (!environment) {
+        res.status(404).json({ error: "Entorno no encontrado" });
+        return;
+      }
+
+      // Realizar las actualizaciones en el entorno
+      if (newName) {
+        environment.name = newName;
+      }
+      if (newImage) {
+        environment.image = newImage;
+      }
+      if (newMap) {
+        environment.map = newMap;
+      }
+
+      await environment.save(); // Guardar los cambios en el entorno
+
+      res.status(200).json({ message: "Entorno actualizado correctamente" });
+    } catch (error) {
+      console.error("Error al actualizar el entorno:", error);
     }
   }
   
