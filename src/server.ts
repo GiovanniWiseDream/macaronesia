@@ -33,9 +33,15 @@ export class Server {
   }
 
   connectMongoDB() {
-    mongoose.connect(process.env.DB_URI).then(() => {
-      console.log("Connected to mongodb.");
-    });
+    if(process.env.NODE_ENV === "PROD") {
+      mongoose.connect(process.env.PROD_DB_URI).then(() => {
+        console.log("Connected to mongodb.");
+      });
+    } else if (process.env.NODE_ENV === "DEV") {
+      mongoose.connect(process.env.DB_URI).then(() => {
+        console.log("Connected to mongodb.");
+      });
+    }
   }
 
   configureBodyParser() {
