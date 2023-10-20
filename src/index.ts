@@ -6,7 +6,7 @@ const hostname = process.env.HOST_NAME || "127.0.0.1";
 let secret = new keyvault();
 
 if (secret) {
-  console.log(secret);
+  console.log(secret.getSecret);
 }
 server.listen(port, hostname, () => {
   console.log(`Server is running at port ${port}`);
