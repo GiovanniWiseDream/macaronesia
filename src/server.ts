@@ -36,23 +36,23 @@ export class Server {
   }
 
   connectMongoDB() {
-    if (process.env.NODE_ENV === "PROD") {
-      mongoose
-        .connect(
-          "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
-        )
-        .then(() => {
-          console.log("Connected to mongodb.");
-        });
-    } else if (process.env.NODE_ENV === "DEV") {
-      mongoose
-        .connect(
-          "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
-        )
-        .then(() => {
-          console.log("Connected to mongodb.");
-        });
-    }
+    // if (process.env.NODE_ENV === "PROD") {
+    //   mongoose
+    //     .connect(
+    //       "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
+    //     )
+    //     .then(() => {
+    //       console.log("Connected to mongodb.");
+    //     });
+    // } else if (process.env.NODE_ENV === "DEV") {
+    mongoose
+      .connect(
+        "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
+      )
+      .then(() => {
+        console.log("Connected to mongodb.");
+      });
+    // }
   }
 
   configureBodyParser() {
