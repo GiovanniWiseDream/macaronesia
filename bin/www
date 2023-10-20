@@ -5,7 +5,7 @@
  */
 
 var { getApp } = require("../app");
-var debug = require("debug")("todolist:server");
+var debug = require("debug")("backend-macaronesia");
 var http = require("http");
 
 /**

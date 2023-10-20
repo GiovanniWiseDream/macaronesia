@@ -38,11 +38,9 @@ export class Server {
 
   async connectMongoDB() {
     const conexion = await db.getConnectionInfo();
-
     mongoose.connect(conexion.DATABASE_URL).then(() => {
       console.log("Connected to mongodb.");
     });
-    // }
   }
 
   configureBodyParser() {
