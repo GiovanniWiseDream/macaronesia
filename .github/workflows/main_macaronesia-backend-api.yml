@@ -12,7 +12,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      PORT: ${{ secrets.PORT }}
+      DB_URI: ${{ secrets.DB_URI }}
+      PROD_DB_URI: ${{ secrets.PROD_DB_URI }}
+      HOST_NAME: ${{ secrets.HOST_NAME }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,14 +40,6 @@ jobs:
         with:
           name: node-app
           path: release.zip
-
-      - name: Set env
-        env:
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          PORT: ${{ secrets.PORT }}
-          DB_URI: ${{ secrets.DB_URI }}
-          PROD_DB_URI: ${{ secrets.PROD_DB_URI }}
-          HOST_NAME: ${{ secrets.HOST_NAME }}
 
   deploy:
     runs-on: ubuntu-latest
