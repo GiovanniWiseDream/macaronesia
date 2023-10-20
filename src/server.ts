@@ -4,8 +4,9 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as dotenv from "dotenv";
 import environmentsRouter from "./routers/environmentsRouter";
-
+import { conection } from "./conection";
 dotenv.config();
+let db = new conection();
 
 export class Server {
   public app: express.Application = express();
@@ -35,23 +36,12 @@ export class Server {
     this.app.use(cors(corsOptions));
   }
 
-  connectMongoDB() {
-    // if (process.env.NODE_ENV === "PROD") {
-    //   mongoose
-    //     .connect(
-    //       "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
-    //     )
-    //     .then(() => {
-    //       console.log("Connected to mongodb.");
-    //     });
-    // } else if (process.env.NODE_ENV === "DEV") {
-    mongoose
-      .connect(
-        "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
-      )
-      .then(() => {
-        console.log("Connected to mongodb.");
-      });
+  async connectMongoDB() {
+    const conexion = await db.getConnectionInfo();
+
+    mongoose.connect(conexion.DATABASE_URL).then(() => {
+      console.log("Connected to mongodb.");
+    });
     // }
   }
 
