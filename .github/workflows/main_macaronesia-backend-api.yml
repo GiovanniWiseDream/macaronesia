@@ -29,6 +29,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
+          npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
@@ -64,8 +65,3 @@ jobs:
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8AA77DAF5EC342BBACBD8B6F769391C1 }}
           package: .
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
