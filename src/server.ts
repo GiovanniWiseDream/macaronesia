@@ -27,20 +27,31 @@ export class Server {
 
   configureCors() {
     const corsOptions = {
-      origin: process.env.NODE_ENV === "PROD" ? process.env.URL_PROD : /^http:\/\/localhost:\d+$/, // Permitir solicitudes solo desde localhost:8100
+      origin:
+        process.env.NODE_ENV === "PROD"
+          ? process.env.URL_PROD
+          : /^http:\/\/localhost:\d+$/, // Permitir solicitudes solo desde localhost:8100
     };
     this.app.use(cors(corsOptions));
   }
 
   connectMongoDB() {
-    if(process.env.NODE_ENV === "PROD") {
-      mongoose.connect(process.env.PROD_DB_URI).then(() => {
-        console.log("Connected to mongodb.");
-      });
+    if (process.env.NODE_ENV === "PROD") {
+      mongoose
+        .connect(
+          "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
+        )
+        .then(() => {
+          console.log("Connected to mongodb.");
+        });
     } else if (process.env.NODE_ENV === "DEV") {
-      mongoose.connect(process.env.DB_URI).then(() => {
-        console.log("Connected to mongodb.");
-      });
+      mongoose
+        .connect(
+          "mongodb+srv://giovanni:piWMm7JQhrB0Mvqc@cluster0.btorcdv.mongodb.net/"
+        )
+        .then(() => {
+          console.log("Connected to mongodb.");
+        });
     }
   }
 
