@@ -1,8 +1,7 @@
-import environments from "../models/environments";
 import Environments from "../models/environments";
-import places from "../models/places";
 import Places from "../models/places";
 
+import points from "../models/points";
 const mongoose = require("mongoose");
 import { Request, Response, RequestHandler } from "express";
 
@@ -74,7 +73,7 @@ export class environmentsController {
     const { _id, newName, newImage, newMap } = req.body;
 
     try {
-      const environment = await environments.findById(_id);
+      const environment = await Environments.findById(_id);
       if (!environment) {
         res.status(404).json({ error: "Entorno no encontrado" });
         return;
@@ -165,7 +164,7 @@ export class environmentsController {
     const { _id, newImage, newEnv, newPoints } = req.body;
 
     try {
-      const place = await places.findById(_id);
+      const place = await Places.findById(_id);
       if (!place) {
         res.status(404).json({ error: "Entorno no encontrado" });
         return;
