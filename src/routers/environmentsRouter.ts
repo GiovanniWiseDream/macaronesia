@@ -12,11 +12,7 @@ class environmentsRouter {
     this.deleteRoutes();
   }
   getRoutes() {
-    this.router.get("/", (req, res) => {
-      res.send("Estás en la página principal");
-    });
     this.router.get("/getEnv", environmentsController.GetEnvironment);
-
   }
 
   deleteRoutes() {}
