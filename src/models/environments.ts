@@ -22,22 +22,16 @@ const environmentSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      points: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Point" // Referencia al modelo de Point
-      }],
       places: [{
-        image: {
-          type: String,
-          required: true,
-        },
-        points: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Place" // Referencia al modelo de Point
+      }],
+      points: [{
           type: mongoose.Schema.Types.ObjectId,
           ref: "Point" // Referencia al modelo de Point
         }],
       },
     ],
- } ],
-});
+  });
 
 export default mongoose.model("Environment", environmentSchema);
