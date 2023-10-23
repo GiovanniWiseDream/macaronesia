@@ -12,6 +12,9 @@ class environmentsRouter {
     this.deleteRoutes();
   }
   getRoutes() {
+    this.router.get("/", (req, res) => {
+      res.send("Estás en la página principal");
+    });
     this.router.get("/getEnv", environmentsController.GetEnvironment);
   }
 
@@ -23,7 +26,6 @@ class environmentsRouter {
 
   patchRoutes() {
     this.router.patch("/update", environmentsController.UpdateEnvironment);
-
   }
 }
 export default new environmentsRouter().router;

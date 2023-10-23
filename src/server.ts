@@ -4,9 +4,7 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as dotenv from "dotenv";
 import environmentsRouter from "./routers/environmentsRouter";
-import { conection } from "./conection";
 dotenv.config();
-let db = new conection();
 
 export class Server {
   public app: express.Application = express();
@@ -28,17 +26,13 @@ export class Server {
 
   configureCors() {
     const corsOptions = {
-      origin:
-        process.env.NODE_ENV === "PROD"
-          ? process.env.URL_PROD
-          : /^http:\/\/localhost:\d+$/, // Permitir solicitudes solo desde localhost:8100
+      origin: process.env.SERVER_URL || `localhost:${process.env.PORT}`,
     };
     this.app.use(cors(corsOptions));
   }
 
   async connectMongoDB() {
-    const conexion = await db.getConnectionInfo();
-    mongoose.connect(conexion.DATABASE_URL).then(() => {
+    mongoose.connect(process.env.MONGO_URI).then(() => {
       console.log("Connected to mongodb.");
     });
   }
@@ -53,7 +47,7 @@ export class Server {
   }
 
   setRoutes() {
-    this.app.use("/api/environments", environmentsRouter);
+    this.app.use("/", environmentsRouter);
   }
   error404Handler() {
     this.app.use((req, res) => {
