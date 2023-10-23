@@ -2,9 +2,9 @@
   "name": "backend-macaronesia",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node src/index.ts"
+    "start": "npx ts-node index.ts"
   },
   "keywords": [],
   "author": "",
