@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "Macaronesia-backend-api"
+          app-name: "macaronesia-backend-api"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8AA77DAF5EC342BBACBD8B6F769391C1 }}
           package: .
