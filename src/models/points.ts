@@ -15,8 +15,13 @@ const pointSchema = new mongoose.Schema({
     },
     places: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Place"
-      }],
+        ref: "Place",
+        image: {
+            type: String,
+            required: true,
+          }
+      },
+      ],
   });
   
   export default mongoose.model("Point", pointSchema);

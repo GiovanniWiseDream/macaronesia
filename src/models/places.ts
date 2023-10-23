@@ -7,7 +7,19 @@ const placeSchema = new mongoose.Schema({
     },
     points: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Point"
+      ref: "Point",
+      rotationX: {
+        type: Number,
+        required: true,
+      },
+      rotationY: {
+        type: Number,
+        required: true,
+      },
+      position: {
+        type: [Number],
+        required: true,
+      }
     }],
   });
   
