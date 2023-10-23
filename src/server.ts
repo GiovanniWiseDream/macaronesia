@@ -47,7 +47,11 @@ export class Server {
   }
 
   setRoutes() {
-    this.app.use("/", environmentsRouter);
+    this.app.get("/", (req, res) => {
+      res.send(
+        "Welcome to The Wise Dreams, Macronesia Proyect, select images route for access to the CRUD"
+      );
+    });
   }
   error404Handler() {
     this.app.use((req, res) => {
