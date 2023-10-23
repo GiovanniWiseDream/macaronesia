@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
 const placeSchema = new mongoose.Schema({
+    env: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Environment",
+        image: {
+          type: String,
+          required: true,
+        },
+      }],
     image: {
       type: String,
       required: true,

@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
 const pointSchema = new mongoose.Schema({
+    env: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Environment",
+        image: {
+          type: String,
+          required: true,
+        },
+      }],
     rotationX: {
       type: Number,
       required: true,
