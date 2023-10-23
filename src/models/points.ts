@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const pointSchema = new mongoose.Schema({
     env: [{
         type: mongoose.Schema.Types.ObjectId,
