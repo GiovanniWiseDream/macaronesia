@@ -4,7 +4,7 @@ import Points from "../models/points";
 const mongoose = require("mongoose");
 import { Request, Response, RequestHandler } from "express";
 
-export class environmentsController {
+export class placesController {
 static async GetPlaces(req, res) {
     try {
       const places = await Places.find({}).select("image");
