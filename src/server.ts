@@ -4,6 +4,8 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as dotenv from "dotenv";
 import environmentsRouter from "./routers/environmentsRouter";
+import pointsRouter from "./routers/pointsRouter";
+import placesRouter from "./routers/placesRouter";
 dotenv.config();
 
 export class Server {
@@ -53,6 +55,8 @@ export class Server {
       );
     });
     this.app.use("/", environmentsRouter);
+    this.app.use("/points", pointsRouter);
+    this.app.use("/places", placesRouter);
   }
   error404Handler() {
     this.app.use((req, res) => {

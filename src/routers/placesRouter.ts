@@ -23,7 +23,6 @@ class placesRouter {
   }
 
   patchRoutes() {
-    format;
     this.router.patch("/updatePlace", placesController.UpdatePlace);
   }
 }

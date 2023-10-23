@@ -23,8 +23,7 @@ class pointsRouter {
   }
 
   patchRoutes() {
-    format;
-    this.router.patch("/updatePlace", pointsController.deleteById);
+    this.router.patch("/deletePoint", pointsController.deleteById);
   }
 }
 export default new pointsRouter().router;
