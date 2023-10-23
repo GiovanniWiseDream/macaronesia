@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { model } from "mongoose";
+
 
 const environmentSchema = new mongoose.Schema({
   name: {
@@ -22,39 +22,22 @@ const environmentSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      points: [
-        {
-          rotationX: {
-            type: Number,
-            required: true,
-          },
-          rotationY: {
-            type: Number,
-            required: true,
-          },
-          position: {
-            type: [Number],
-            required: true,
-          },
-          place: {
-            type: [Number],
-            required: true,
-          },
+      points: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Point" // Referencia al modelo de Point
+      }],
+      places: [{
+        image: {
+          type: String,
+          required: true,
         },
-      ],
-      places: [
-        {
-          image: {
-            type: String,
-            required: true,
-          },
-          points: {
-            type: [Number],
-            required: true,
-          },
-        },
-      ],
-    },
-  ],
+        points: [{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Point" // Referencia al modelo de Point
+        }],
+      },
+    ],
+ } ],
 });
-export default model("users", environmentSchema);
+
+export default mongoose.model("Environment", environmentSchema);
