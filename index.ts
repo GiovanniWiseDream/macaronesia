@@ -1,4 +1,4 @@
-import { Server } from "./server";
+import { Server } from "./src/server";
 
 let server = new Server().app;
 let port = parseInt(process.env.PORT) || 3001;
